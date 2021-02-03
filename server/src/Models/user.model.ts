@@ -11,7 +11,8 @@ export interface IUser extends Document {
     name: string,
     email: string,
     uid: string,
-    phone: number,
+    phone: string,
+    date: Date,
     addresses: [IAddress]
 }
 
@@ -29,19 +30,25 @@ const userSchema: Schema = new Mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     uid: {
         type: String,
-        required: true
+        required:true,
     },
     phone: {
-        type: Number,
-        required: true
+        type: String,
+        required: true,
+    },
+    date:{
+        type: Date,
+        default: Date.now()
     },
 
     addresses: [addressSchema]
 })
 
+const User = Mongoose.model<IUser>('User', userSchema, "Users") 
 
-export default Mongoose.models.User || Mongoose.model<IUser>('User', userSchema, "Users")
+export default User
