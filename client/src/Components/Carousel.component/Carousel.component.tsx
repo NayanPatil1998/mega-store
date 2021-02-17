@@ -1,4 +1,4 @@
-import './Carousel.component.css'
+import "./Carousel.component.css";
 
 const Carousel: React.FunctionComponent = () => {
   return (
@@ -36,9 +36,9 @@ const Carousel: React.FunctionComponent = () => {
                   dolor id nibh ultricies vehicula ut id elit.
                 </p>
                 <p>
-                  <a className="btn btn-lg btn-primary" href="#" role="button">
+                  <p className="btn btn-lg btn-primary" role="button">
                     Sign up today
-                  </a>
+                  </p>
                 </p>
               </div>
             </div>
@@ -64,11 +64,7 @@ const Carousel: React.FunctionComponent = () => {
                   Donec id elit non mi porta gravida at eget metus. Nullam id
                   dolor id nibh ultricies vehicula ut id elit.
                 </p>
-                <p>
-                  <a className="btn btn-lg btn-primary" href="#" role="button">
-                    Learn more
-                  </a>
-                </p>
+                <p></p>
               </div>
             </div>
           </div>
@@ -93,11 +89,7 @@ const Carousel: React.FunctionComponent = () => {
                   Donec id elit non mi porta gravida at eget metus. Nullam id
                   dolor id nibh ultricies vehicula ut id elit.
                 </p>
-                <p>
-                  <a className="btn btn-lg btn-primary" href="#" role="button">
-                    Browse gallery
-                  </a>
-                </p>
+                <p></p>
               </div>
             </div>
           </div>

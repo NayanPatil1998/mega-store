@@ -2,11 +2,13 @@ import React from "react";
 
 const Header: React.FunctionComponent = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      {/* <div className="container"> */}
+    <div className="">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light py-3">
         <div className="container">
-          <a className="navbar-brand" href="#">
-            Navbar
+          <a className="navbar-brand">
+            <p className="h2">
+              <span>Mega</span> Store
+            </p>
           </a>
           <button
             className="navbar-toggler"
@@ -19,23 +21,29 @@ const Header: React.FunctionComponent = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item me-2">
+                <button type="button" className="btn btn-dark">
+                  Sign Up
+                </button>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
+              <li className="nav-item me-2">
+                <button type="button" className="btn btn-dark">
+                  Login
+                </button>
+              </li>
+              <li className="nav-item me-2">
+                <button type="button" className="btn btn-dark">
+                  Sign Out
+                </button>
               </li>
             </ul>
           </div>
         </div>
-      {/* </div> */}
-    </nav>
+      </nav>
+    </div>
   );
 };
 
