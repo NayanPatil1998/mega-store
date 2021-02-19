@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header: React.FunctionComponent = () => {
   return (
@@ -6,9 +7,7 @@ const Header: React.FunctionComponent = () => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light py-3">
         <div className="container">
           <a className="navbar-brand">
-            <p className="h2">
-              <span>Mega</span> Store
-            </p>
+            <p className="h2">Mega Store</p>
           </a>
           <button
             className="navbar-toggler"
@@ -21,20 +20,23 @@ const Header: React.FunctionComponent = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto">
-              <li className="nav-item me-2">
-                <button type="button" className="btn btn-dark">
-                  Sign Up
-                </button>
+              <li className="nav-item me-2 mb-2">
+                <Link to="/signup">
+                  <button type="button" className="btn btn-dark">
+                    Sign Up
+                  </button>
+                </Link>
               </li>
-              <li className="nav-item me-2">
-                <button type="button" className="btn btn-dark">
-                  Login
-                </button>
+              <li className="nav-item me-2 mb-2">
+                <Link to="/login">
+                  <button type="button" className="btn btn-dark">
+                    Login
+                  </button>
+                </Link>
               </li>
-              <li className="nav-item me-2">
+              <li className="nav-item me-2 mb-2">
                 <button type="button" className="btn btn-dark">
                   Sign Out
                 </button>

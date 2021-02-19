@@ -35,10 +35,8 @@ const Carousel: React.FunctionComponent = () => {
                   Donec id elit non mi porta gravida at eget metus. Nullam id
                   dolor id nibh ultricies vehicula ut id elit.
                 </p>
-                <p>
-                  <p className="btn btn-lg btn-primary" role="button">
-                    Sign up today
-                  </p>
+                <p className="btn btn-lg btn-primary" role="button">
+                  Sign up today
                 </p>
               </div>
             </div>

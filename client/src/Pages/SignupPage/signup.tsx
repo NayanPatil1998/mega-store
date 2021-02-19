@@ -2,34 +2,55 @@ import { useState } from "react";
 import firebase from "firebase";
 import { useHistory } from "react-router-dom";
 import { auth } from "../../Firebase/firebase";
-import "./Login.page.css";
+import "./signup.css";
 
-const Login: React.FunctionComponent = () => {
+const SignUp: React.FunctionComponent = () => {
   const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
-  const signIn = (e: any) => {
+  const register = (e: any) => {
     e.preventDefault();
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((rootUser) => {
+        var user = firebase.auth().currentUser;
 
-    // console.warn(email + "  " + password);
+        user
+          ?.updateProfile({
+            displayName: name,
+          })
+          .then(() => {})
+          .catch(function (error) {});
 
-    // auth
-    //   .signInWithEmailAndPassword(email, password)
-    //   .then((user) => {
-    //     console.log(user);
-    //     history.push("/");
-    //   })
-    //   .catch((err: firebase.FirebaseError) => alert(err.message));
+        if (auth) {
+          history.push("/");
+        }
+      })
+      .catch((errr) => alert(errr.message));
   };
 
   return (
     <div className="text-center LoginPageContainer">
       <main className="form-signin">
-        <form onSubmit={signIn}>
+        <form onSubmit={register}>
           <p className="h1">Mega Store</p>
-          <h1 className="h4 mb-3 fw-normal">Please sign in</h1>
+          <h1 className="h4 mb-3 fw-normal">Please sign up</h1>
+          <label htmlFor="inputEmail" className="visually-hidden">
+            Name
+          </label>
+          <input
+            type="text"
+            id="inputName"
+            value={name}
+            className="form-control"
+            placeholder="Name"
+            required
+            onChange={(e) => setName(e.target.value)}
+            autoFocus
+          />
           <label htmlFor="inputEmail" className="visually-hidden">
             Email address
           </label>
@@ -56,7 +77,7 @@ const Login: React.FunctionComponent = () => {
             required
           />
           <button className="w-100 btn btn-lg btn-primary" type="submit">
-            Sign in
+            Sign Up
           </button>
           {/* <p className="mt-5 mb-3 text-muted">&copy; 2017-2021</p> */}
         </form>
@@ -65,4 +86,4 @@ const Login: React.FunctionComponent = () => {
   );
 };
 
-export default Login;
+export default SignUp;

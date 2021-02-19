@@ -8,7 +8,9 @@ const Footer: React.FunctionComponent = () => {
             <div className="col-11">
               <div className="row ">
                 <div className="col-xl-8 col-md-4 col-sm-4 col-12 my-auto mx-auto a">
-                  <h3 className="text-muted mb-md-0 mb-5 bold-text">Pepper.</h3>
+                  <h3 className="text-muted mb-md-0 mb-5 bold-text">
+                    Mega Store.
+                  </h3>
                 </div>
                 <div className="col-xl-2 col-md-4 col-sm-4 col-12">
                   <h6 className="mb-3 mb-lg-4 bold-text ">
