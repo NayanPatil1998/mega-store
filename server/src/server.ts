@@ -6,6 +6,7 @@ import usersRouter from "./Routes/user.routes";
 var morgan = require("morgan");
 require("dotenv").config();
 import * as admin from "firebase-admin";
+import productRouter from "./Routes/product.routes";
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 app.use("/api", usersRouter);
+app.use("/api", productRouter);
 
 initdb();
 

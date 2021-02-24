@@ -20,5 +20,10 @@ export const checkIfAuthenticated = async (
         error: "You are not authorized to make this request",
       });
     }
+  }else{
+    return res.status(401).send({
+      error: "You are not authorized to make this request",
+    });
   }
+
 };
