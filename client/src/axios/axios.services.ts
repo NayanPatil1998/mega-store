@@ -1,7 +1,8 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import { auth } from "../Firebase/firebase";
+import IProduct from "../Components/ProductContainer/Product/product.type";
 
-const baseUrl: string = "http://localhost:8080/api";
+export const baseUrl: string = "http://0.0.0.0:8080/api";
 
 export const createUser = async (
   name: string,
@@ -31,3 +32,9 @@ export const createUser = async (
       console.log(error);
     });
 };
+
+// export const getProducts = async ()=> {
+//     await
+//
+//
+// }

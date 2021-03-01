@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import Header from "./Layout/Header/header.layout";
-import Carousel from "./Components/Carousel.component/Carousel.component";
-import Footer from "./Layout/Footer/Footer.layout";
+import Home from "./Pages/Home/Home";
+
 import Login from "./Pages/Login.pages/Login.pages";
 import SignUp from "./Pages/SignupPage/signup";
 
@@ -38,9 +37,7 @@ function App() {
             </Route>
             <Route path="/signup"></Route>
             <Route path="/">
-              <Header />
-              <Carousel />
-              <Footer />
+              <Home />
             </Route>
           </Switch>
         </div>

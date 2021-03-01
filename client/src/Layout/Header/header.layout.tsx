@@ -44,6 +44,15 @@ const Header: React.FunctionComponent = () => {
                   Hello {state.user ? state.user.displayName : "Guest"}
                 </h5>
               </li>
+              <li className="nav-item me-2">
+                {/* eslint-disable-next-line */}
+                <a className="nav-link ">
+                  <span className="badge badge-pill bg-danger me-1">0</span>
+                  <span>
+                    <ShoppingBasket />
+                  </span>
+                </a>
+              </li>
               {state.user == null ? (
                 <li className="nav-item me-2 mb-2">
                   <Link to="/signup">
@@ -72,15 +81,7 @@ const Header: React.FunctionComponent = () => {
                   2
                 </h5>
               </li> */}
-              <li className="nav-item">
-                {/* eslint-disable-next-line */}
-                <a className="nav-link ">
-                  <span className="badge badge-pill bg-danger me-1">1</span>
-                  <span>
-                    <ShoppingBasket />
-                  </span>
-                </a>
-              </li>
+
             </ul>
           </div>
         </div>
