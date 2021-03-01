@@ -9,8 +9,6 @@ export const allUser = async (req: Request, res: Response) => {
 
 export const addUser = async (req: Request, res: Response) => {
   const { name, email, uid } = req.body;
-
-  console.log(email);
   try {
     const user: IUser = new User({
       name: name,

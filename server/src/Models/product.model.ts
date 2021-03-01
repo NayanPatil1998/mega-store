@@ -7,6 +7,8 @@ export interface IProductModel extends Document{
     description : string;
     category: string;
     image: string;
+    date: Date;
+    feat: boolean;
 }
 
 const productSchema : Schema = new Schema({
@@ -29,7 +31,15 @@ const productSchema : Schema = new Schema({
     image : {
         type:String,
         required: true
-    }
+    },
+    feat :{
+      type: Boolean,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now(),
+    },
 })
 
 const Product = Mongoose.model<IProductModel>("Product", productSchema, "Products")
