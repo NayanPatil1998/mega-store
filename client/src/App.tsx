@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { auth } from "./Firebase/firebase";
 import { useDispatch } from "react-redux";
 import { setUser } from "./Redux/Actions/actionCreators";
+import ProductDetail from "./Pages/ProductDetails/ProductDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
               <Login />
             </Route>
             <Route path="/signup"></Route>
+            <Route path="/product/:id" component={ProductDetail} />
             <Route path="/">
               <Home />
             </Route>

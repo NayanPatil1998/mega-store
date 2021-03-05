@@ -1,0 +1,14 @@
+.ProductDetails{
+    padding: 15px;
+    margin: 70px auto;
+}
+.productImage {
+    height: 600px;
+    width: 400px;
+    object-fit: contain;
+}
+
+.cartbutton{
+    width: 200px;
+    height: 50px;
+}

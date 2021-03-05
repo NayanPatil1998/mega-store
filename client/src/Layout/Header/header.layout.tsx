@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { auth } from "../../Firebase/firebase";
 import { IinitialState } from "../../Redux/Reducers";
 import "react-toastify/dist/ReactToastify.css";
+import "./Header.css"
 
 const Header: React.FunctionComponent = () => {
   toast.configure();
@@ -16,8 +17,8 @@ const Header: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light py-3">
+    <div className="header">
+      <nav className="navbar navbar-expand-lg navbar-light bg-white py-3">
         <div className="container">
           {/* eslint-disable-next-line */}
           <a className="navbar-brand">
