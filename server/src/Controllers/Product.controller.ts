@@ -12,6 +12,21 @@ export const featProducts = async(req: Request, res: Response) => {
     res.json(products);
 }
 
+export const getProductById = async (req: Request, res: Response) => {
+
+   try{
+       const id = req.params.id;
+       const product : IProductModel | null = await Product.findById({_id : id,})
+       res.json(product)
+   }
+   catch (err){
+       res.json(err)
+   }
+
+
+
+}
+
 
 
 
