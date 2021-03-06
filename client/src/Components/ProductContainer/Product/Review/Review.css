@@ -1,0 +1,11 @@
+.avatar {
+    vertical-align: middle;
+    width: 60px;
+    height: 40px;
+    border-radius: 50%;
+}
+.name{
+    width: 50%;
+    margin: auto;
+    margin-left: 5px;
+}

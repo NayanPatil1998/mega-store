@@ -2,16 +2,15 @@ import React from 'react'
 import IProduct from "../../Components/ProductContainer/Product/product.type";
 import axios, {AxiosResponse} from "axios"
 import {baseUrl} from "../../axios/axios.services";
-import {BrowserRouterProps} from "react-router-dom";
 import {useParams} from "react-router-dom";
 import {css} from "@emotion/react";
 import {toast} from "react-toastify";
 import {HashLoader} from "react-spinners";
-import RingLoader from "react-spinners/RingLoader";
 
 import "./ProductDetail.css"
 import {Add, Remove, ShoppingCart, Star, StarBorder} from "@material-ui/icons";
 import Header from "../../Layout/Header/header.layout";
+import ProductReview from "../../Components/ProductContainer/Product/Review/ProductReviews";
 
 
 const ProductDetail : React.FunctionComponent = (props) => {
@@ -54,7 +53,7 @@ const ProductDetail : React.FunctionComponent = (props) => {
                 loading ? (
                     <HashLoader loading={loading} css={override} size={150} />
                 ) : (
-                    <div className="container" id="product-section">
+                    <div className="container mb-2" id="product-section">
                         <div className="row">
                             <div className="col-md-5 mb-4">
                                 <img src={product.image} className="img-fluid productImage" alt="..." />
@@ -86,6 +85,8 @@ const ProductDetail : React.FunctionComponent = (props) => {
                                 </div>
                             </div>
                         </div>
+                        <ProductReview />
+
                     </div>
                 )
             }
