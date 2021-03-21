@@ -16,16 +16,26 @@ export const getProductById = async (req: Request, res: Response) => {
 
    try{
        const id = req.params.id;
-       const product : IProductModel | null = await Product.findById({_id : id,})
+       const product : IProductModel | null = await Product.findById({_id : id,},{},{},(err) => console.log(err))
        res.json(product)
    }
    catch (err){
-       res.json(err)
+       res.status(404).json(err.reason)
    }
-
-
-
 }
+
+export const getProductsByCategory = async (req: Request, res: Response) => {
+    try{
+        const category = req.params.category;
+        const products: IProductModel[] = await Product.find({category: category}, (err) => console.error(err))
+        res.status(200).json(products)
+    }catch (error) {
+        res.status(402).json(error)
+    }
+}
+
+
+
 
 
 

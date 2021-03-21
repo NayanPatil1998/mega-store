@@ -1,5 +1,11 @@
 import express from "express";
-import {addProduct, allProducts, featProducts, getProductById} from "../Controllers/Product.controller";
+import {
+    addProduct,
+    allProducts,
+    featProducts,
+    getProductById,
+    getProductsByCategory
+} from "../Controllers/Product.controller";
 
 const productRouter = express.Router()
 
@@ -10,5 +16,7 @@ productRouter.get('/featproducts', featProducts)
 productRouter.get("/product/:id", getProductById)
 
 productRouter.post("/addproduct", addProduct)
+
+productRouter.get("/products/:category", getProductsByCategory)
 
 export default  productRouter;

@@ -6,7 +6,11 @@ import {ShoppingCart, Star} from "@material-ui/icons";
 import "./product.css"
 import {Link} from "react-router-dom";
 
+
 const Product : React.FunctionComponent<{ product: IProduct }> = ({product}) => {
+
+
+
 
     const [loading, setLoading] = React.useState(true)
     const setLoad= () =>{
@@ -24,7 +28,7 @@ const Product : React.FunctionComponent<{ product: IProduct }> = ({product}) => 
                      className="card-img-top " alt=""/>
 
                 <div className="card-body">
-                    <h5 className="card-title">{product.title}</h5>
+                    <h5 className="card-title Product-title">{product.title}</h5>
                     {/*<Star style={{color:"yellow"}}/> 4*/}
                     <div className="buy d-flex justify-content-between align-items-center m-2" style={{ verticalAlign: "text-bottom",  bottom: "0px"}}>
                         <div className="price text-success"><h5 className="mt-4">₹ {product.price}</h5></div>

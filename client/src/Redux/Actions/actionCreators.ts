@@ -1,5 +1,7 @@
 import firebase from "firebase";
-import { SET_USER, USER_LOADING } from "./actionTypes";
+import {ADD_TO_CART, SET_USER, USER_LOADING} from "./actionTypes";
+import {Action} from "../Reducers/type";
+import IProduct from "../../Components/ProductContainer/Product/product.type";
 
 export const setUser = (user: firebase.User | null) => {
   const action: Action = {
@@ -15,3 +17,11 @@ export const userLoader = () => {
   };
   return action;
 };
+
+export const addToCart = (product: IProduct) => {
+  const action: Action = {
+    type : ADD_TO_CART,
+    payload : product
+  }
+  return action
+}
