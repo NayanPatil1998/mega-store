@@ -5,32 +5,40 @@ import {baseUrl} from "../../axios/axios.services";
 import {useParams} from "react-router-dom";
 import {css} from "@emotion/react";
 import {toast} from "react-toastify";
-import {HashLoader} from "react-spinners";
+import {HashLoader, PulseLoader} from "react-spinners";
 
 import "./ProductDetail.css"
 import {Add, Remove, ShoppingCart, Star, StarBorder} from "@material-ui/icons";
 import Header from "../../Layout/Header/header.layout";
 import ProductReview from "../../Components/ProductContainer/Product/Review/ProductReviews";
+import Footer from "../../Layout/Footer/Footer.layout";
+import {addToCart} from "../../Redux/Actions/actionCreators";
+import {useDispatch} from "react-redux";
 
 
 const ProductDetail : React.FunctionComponent = (props) => {
 
     toast.configure();
+
+    const dispatch = useDispatch();
     const params: any = useParams()
     const id = params.id;
 
     const [product, setProduct] : any= React.useState(null);
     const [loading, setLoading] = React.useState(true);
     const [imageLoading, setImageLoading] = React.useState(true);
-    const [quantity, setQuantity] = React.useState(1)
     const [error, setError] = React.useState("")
 
     const override = css`
-    display: block;
-    margin: auto;
+    margin: 50% 50%;
+      top: 50%;
     border-color: red;
   `;
 
+    function addCart(){
+        dispatch(addToCart(product));
+        toast.success("Added to cart successfully")
+    }
 
     React.useEffect(() => {
 
@@ -44,7 +52,9 @@ const ProductDetail : React.FunctionComponent = (props) => {
                 setError(err);
             })
     }, [id])
-
+    const setLoad= () =>{
+        setLoading(false)
+    }
     return(
         <div>
             <Header />
@@ -56,7 +66,8 @@ const ProductDetail : React.FunctionComponent = (props) => {
                     <div className="container mb-2" id="product-section">
                         <div className="row">
                             <div className="col-md-5 mb-4">
-                                <img src={product.image} className="img-fluid productImage" alt="..." />
+                                <img onLoad={setLoad} src={product.image} className="img-fluid productImage" alt="..." />
+
                             </div>
                             <div className="col-md-6">
                                 <div className="col-md-12">
@@ -73,25 +84,22 @@ const ProductDetail : React.FunctionComponent = (props) => {
                                     <p className="lead mb-3" >
                                         {product.description}
                                     </p>
-                                    <div className="col-md-8 mb-3">
-                                        <button className="btn btn-light me-3"> <Add /> </button>
-                                        <button className="btn btn-white disabled" > <h5>5</h5> </button>
-                                        <button className="btn btn-light mx-3"> <Remove /> </button>
-                                    </div>
+
                                     <div className="col-md-8 mb-3">
                                         <button className="btn btn-dark cartbutton me-3">Buy Now</button>
-                                        <button className="btn btn-light cartbutton"><ShoppingCart />  Add to cart </button>
+                                        <button onClick={addCart} className="btn btn-light cartbutton"><ShoppingCart />  Add to cart </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <ProductReview />
-
                     </div>
                 )
             }
 
         </div>
+            <Footer />
+
         </div>
     )
 }
