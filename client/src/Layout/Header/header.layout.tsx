@@ -11,10 +11,20 @@ import "./Header.css"
 const Header: React.FunctionComponent = () => {
   toast.configure();
   const state = useSelector((state: IinitialState) => state);
+  const [cartLength, setCartLength] = React.useState(0)
   const signOut = () => {
     auth.signOut();
     toast.info("Sign out successful");
   };
+
+  React.useEffect(() => {
+     let count = 0;
+     state.cart.map((product) => {
+       count = count + product.quantity
+     })
+    setCartLength(count)
+    console.info(cartLength)
+  },[state.cart])
 
   return (
     <div className="header">
@@ -45,14 +55,25 @@ const Header: React.FunctionComponent = () => {
                   Hello {state.user ? state.user.displayName : "Guest"}
                 </h5>
               </li>
+
+               <li className="nav-item me-3">
+                 <Link to="/" style={{ textDecoration: "none" }}>
+                 <h5 className="nav-link">
+                   Home
+                 </h5>
+                 </Link>
+
+               </li>
               <li className="nav-item me-2">
                 {/* eslint-disable-next-line */}
-                <a className="nav-link ">
-                  <span className="badge badge-pill bg-danger me-1">0</span>
-                  <span>
+               <Link to="/cart">
+                 <a className="nav-link ">
+                   <span className="badge badge-pill bg-danger me-1">{cartLength}</span>
+                   <span>
                     <ShoppingBasket />
                   </span>
-                </a>
+                 </a>
+               </Link>
               </li>
               {state.user == null ? (
                 <li className="nav-item me-2 mb-2">
@@ -80,7 +101,7 @@ const Header: React.FunctionComponent = () => {
                 />
                 <h5 className="pt-1" style={{ display: "inline-block" }}>
                   2
-                </h5>
+                </h5
               </li> */}
 
             </ul>
