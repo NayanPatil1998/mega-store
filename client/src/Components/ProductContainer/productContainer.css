@@ -1,4 +1,7 @@
-.ProductContainer{
-    margin: auto;
-    width: 70%;
+.ProductContainer {
+  margin: auto;
+  width: 75%;
+}
+.row {
+  justify-content: center;
 }

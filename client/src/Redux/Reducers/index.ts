@@ -15,6 +15,10 @@ const initialState: IinitialState = {
   cart: [],
 };
 
+export const totalFun = (total: number, cartItem: CartItem) => {
+  return total +(cartItem.quantity * cartItem.product.price);
+}
+
 
 
 

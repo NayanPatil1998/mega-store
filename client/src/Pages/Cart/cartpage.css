@@ -1,0 +1,11 @@
+.summary {
+  margin: 10px;
+}
+.Product-title {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 40px;
+  max-width: 30rem;
+}
