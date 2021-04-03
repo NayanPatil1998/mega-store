@@ -15,9 +15,12 @@ const CartProduct: React.FunctionComponent<{ cartItem: CartItem }> = ({
 
   return (
     <div>
-      <div className="card m-3 p-3">
+      <div className="card m-3 p-3 " style={{}}>
         <div className="row g-0 px-2 justify-content-between">
-          <div className="col-md-4" style={{ textAlign: "center" }}>
+          <div
+            className="col-md-4"
+            style={{ textAlign: "center", minWidth: "270px" }}
+          >
             <img
               src={cartItem.product.image}
               style={{
@@ -27,7 +30,7 @@ const CartProduct: React.FunctionComponent<{ cartItem: CartItem }> = ({
               alt="..."
             />
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6" style={{ minWidth: "250px" }}>
             <div className="card-body">
               <div className=" mb-auto justify-content-end">
                 <h4 className="card-title mb-2 Product-title">

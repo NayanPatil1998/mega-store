@@ -9,3 +9,9 @@
   max-height: 40px;
   max-width: 30rem;
 }
+
+@media only screen and (max-width: 1090px) {
+  .subtotal {
+    margin-top: 70px;
+  }
+}

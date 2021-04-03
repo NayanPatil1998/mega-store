@@ -15,7 +15,7 @@ const CartPage: React.FunctionComponent = () => {
       <Header />
       <div style={{ margin: "80px 50px " }}>
         <div className="row justify-content-evenly">
-          <div className="col-md-8">
+          <div className="col">
             <h1 className="mb-4">SHOPPING BAG</h1>
             <hr />
             {state.cart.map((product) => {
@@ -26,7 +26,10 @@ const CartPage: React.FunctionComponent = () => {
               );
             })}
           </div>
-          <div className="col-md-3" style={{ textAlign: "center" }}>
+          <div
+            className="col-md-3 subtotal"
+            style={{ textAlign: "center", minWidth: "400px" }}
+          >
             <div className="my-2">
               <h2 className="mb-4">CART SUMMARY </h2>
               <hr />
