@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { IinitialState, totalFun } from "../../Redux/Reducers";
 import CartProduct from "./CartProduct";
 import "./cartpage.css";
+import FlipMove from "react-flip-move";
+import NumberFormat from "react-number-format";
 const CartPage: React.FunctionComponent = () => {
   const state = useSelector((state: IinitialState) => state);
 
@@ -18,13 +20,15 @@ const CartPage: React.FunctionComponent = () => {
           <div className="col">
             <h1 className="mb-4">SHOPPING BAG</h1>
             <hr />
-            {state.cart.map((product) => {
-              return (
-                <div>
-                  <CartProduct cartItem={product} />
-                </div>
-              );
-            })}
+            <FlipMove>
+              {state.cart.map((product, index) => {
+                return (
+                  <div>
+                    <CartProduct key={index} cartItem={product} index={index} />
+                  </div>
+                );
+              })}
+            </FlipMove>
           </div>
           <div
             className="col-md-3 subtotal"
@@ -38,7 +42,14 @@ const CartPage: React.FunctionComponent = () => {
                   <p className="h4">SubTotal</p>
                 </div>
                 <div>
-                  <p className="h4"> ₹ {getTotal()}</p>
+                  <NumberFormat
+                    renderText={(value) => <h4 className="mb-3">{value}</h4>}
+                    decimalScale={2}
+                    value={getTotal()}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"₹"}
+                  />
                 </div>
               </div>
               <div className="d-flex justify-content-between summary">
@@ -55,7 +66,14 @@ const CartPage: React.FunctionComponent = () => {
                   <p className="h4">Total</p>
                 </div>
                 <div>
-                  <p className="h4"> ₹ {getTotal()}</p>
+                  <NumberFormat
+                    renderText={(value) => <h4>{value}</h4>}
+                    decimalScale={2}
+                    value={getTotal()}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"₹"}
+                  />
                 </div>
               </div>
             </div>
@@ -63,15 +81,15 @@ const CartPage: React.FunctionComponent = () => {
               style={{ width: "100%", height: "50px" }}
               className="btn btn-dark my-3"
             >
-              <h5>Proceed to checkout</h5>
+              <h5>Proceed</h5>
             </button>
 
-            <img
+            {/* <img
               className="img-fluid"
               width="30%"
               src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fe%2Feb%2FStripe_logo%252C_revised_2016.png&f=1&nofb=1"
               alt=""
-            />
+            /> */}
           </div>
         </div>
       </div>

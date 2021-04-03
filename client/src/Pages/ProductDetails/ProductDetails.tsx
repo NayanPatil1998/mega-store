@@ -111,7 +111,7 @@ const ProductDetail: React.FunctionComponent = (props) => {
             <ul>
               {product?.description.map((element, index) => (
                 <li className="blockquote">
-                  <p key={index} className="mb-3">
+                  <p key={element} className="mb-3">
                     {element}
                   </p>
                 </li>

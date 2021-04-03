@@ -5,6 +5,7 @@ import { ScaleLoader } from "react-spinners";
 import { ShoppingCart, Star } from "@material-ui/icons";
 import "./product.css";
 import { Link } from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 const Product: React.FunctionComponent<{ product: IProduct }> = ({
   product,
@@ -35,7 +36,14 @@ const Product: React.FunctionComponent<{ product: IProduct }> = ({
           style={{ verticalAlign: "text-bottom", bottom: "0px" }}
         >
           <div className="price text-success">
-            <h5 className="mt-4">₹ {product.price}</h5>
+            <NumberFormat
+              renderText={(value) => <h4 className="mt-4">{value}</h4>}
+              decimalScale={2}
+              value={product.price}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"₹"}
+            />
           </div>
           <Link to={`/product/${product._id}`}>
             <button className="btn btn-danger mt-3"> View Details</button>

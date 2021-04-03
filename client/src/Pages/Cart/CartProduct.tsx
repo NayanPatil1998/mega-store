@@ -1,16 +1,35 @@
 import React from "react";
 import { CartItem } from "../../Redux/Reducers/type";
 import { Add, Remove } from "@material-ui/icons";
+import { useDispatch } from "react-redux";
+import NumberFormat from "react-number-format";
 
-const CartProduct: React.FunctionComponent<{ cartItem: CartItem }> = ({
-  cartItem,
-}) => {
+import {
+  decrementProductQuantity,
+  incrementProductQuantity,
+  removeFromCart,
+} from "../../Redux/Actions/actionCreators";
+
+const CartProduct: React.FunctionComponent<{
+  cartItem: CartItem;
+  index: number;
+}> = ({ cartItem, index }) => {
+  const dispatch = useDispatch();
+
   const [quantity, setQuantity] = React.useState(cartItem.quantity);
   const increment = () => {
-    setQuantity(quantity + 1);
+    dispatch(incrementProductQuantity(index));
   };
   const decrement = () => {
-    setQuantity(quantity - 1);
+    if (cartItem.quantity == 1) {
+      removeProduct();
+    } else {
+      dispatch(decrementProductQuantity(index));
+    }
+  };
+
+  const removeProduct = () => {
+    dispatch(removeFromCart(index));
   };
 
   return (
@@ -26,6 +45,7 @@ const CartProduct: React.FunctionComponent<{ cartItem: CartItem }> = ({
               style={{
                 objectFit: "contain",
                 width: "250px",
+                height: "250px",
               }}
               alt="..."
             />
@@ -36,7 +56,14 @@ const CartProduct: React.FunctionComponent<{ cartItem: CartItem }> = ({
                 <h4 className="card-title mb-2 Product-title">
                   {cartItem.product.title}
                 </h4>
-                <h4 className="mb-3">₹ {cartItem.product.price}</h4>
+                <NumberFormat
+                  renderText={(value) => <h4 className="mb-3">{value}</h4>}
+                  decimalScale={2}
+                  value={cartItem.product.price}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"₹"}
+                />
                 <div className="d-flex justify-content-between ">
                   <div className="row">
                     <button
@@ -47,7 +74,7 @@ const CartProduct: React.FunctionComponent<{ cartItem: CartItem }> = ({
                       <Add />{" "}
                     </button>
                     <button style={{ width: "50px" }} className="btn disabled">
-                      {quantity}{" "}
+                      {cartItem.quantity}{" "}
                     </button>
                     <button
                       onClick={decrement}
@@ -57,7 +84,11 @@ const CartProduct: React.FunctionComponent<{ cartItem: CartItem }> = ({
                       <Remove />{" "}
                     </button>
                   </div>
-                  <button style={{ width: "30%" }} className="btn btn-dark">
+                  <button
+                    style={{ width: "30%" }}
+                    onClick={removeProduct}
+                    className="btn btn-dark"
+                  >
                     Remove from cart
                   </button>
                 </div>
