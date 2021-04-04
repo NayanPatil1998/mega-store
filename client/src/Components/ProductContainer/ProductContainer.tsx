@@ -43,7 +43,7 @@ const ProductContainer: React.FunctionComponent = () => {
 
   return (
     <div className="ProductContainer">
-      <h2 className="h2">Featured Products</h2>
+      <h2 className="h2 text-center">Featured Products</h2>
       {isLoading ? (
         <PropagateLoader css={override} />
       ) : (

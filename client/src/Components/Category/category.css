@@ -1,0 +1,19 @@
+.category {
+  width: 300px;
+  height: 250px;
+  margin: 20px 12px;
+  cursor: pointer;
+}
+.card {
+  padding-left: 0;
+  margin: none;
+}
+
+.category > img {
+  width: 300px;
+  height: 200px;
+}
+.category > h5 {
+  text-transform: uppercase;
+  margin-top: 5px;
+}
