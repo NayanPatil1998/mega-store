@@ -15,77 +15,77 @@ const Carousel: React.FunctionComponent = () => {
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <svg
-              className="bd-placeholder-img"
+            <img
               width="100%"
+              className="img-fluid"
               height="100%"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <rect width="100%" height="100%" fill="#777" />
-            </svg>
+              src="https://images.unsplash.com/photo-1550246140-29f40b909e5a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt=""
+            />
 
             <div className="container">
-              <div className="carousel-caption text-start">
-                <h1>Example headline.</h1>
+              <div className="carousel-caption">
+                <h1>Men Clothing</h1>
                 <p>
-                  Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                  Donec id elit non mi porta gravida at eget metus. Nullam id
-                  dolor id nibh ultricies vehicula ut id elit.
-                </p>
-                <p className="btn btn-lg btn-primary" role="button">
-                  Sign up today
+                  Photo by{" "}
+                  <a href="https://unsplash.com/@jonathanborba?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                    Jonathan Borba
+                  </a>{" "}
+                  on{" "}
+                  <a href="https://unsplash.com/s/photos/men-fashion?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                    Unsplash
+                  </a>
                 </p>
               </div>
             </div>
           </div>
           <div className="carousel-item">
-            <svg
-              className="bd-placeholder-img"
+            <img
+              className="img-fluid"
               width="100%"
               height="100%"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <rect width="100%" height="100%" fill="#777" />
-            </svg>
+              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+              alt=""
+            />
 
             <div className="container">
               <div className="carousel-caption">
-                <h1>Another example headline.</h1>
+                <h1>Women Clothing</h1>
                 <p>
-                  Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                  Donec id elit non mi porta gravida at eget metus. Nullam id
-                  dolor id nibh ultricies vehicula ut id elit.
+                  Photo by{" "}
+                  <a href="https://unsplash.com/@freestocks?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                    freestocks
+                  </a>{" "}
+                  on{" "}
+                  <a href="https://unsplash.com/s/photos/fashion?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                    Unsplash
+                  </a>
                 </p>
                 <p></p>
               </div>
             </div>
           </div>
           <div className="carousel-item">
-            <svg
-              className="bd-placeholder-img"
+            <img
               width="100%"
               height="100%"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <rect width="100%" height="100%" fill="#777" />
-            </svg>
+              className="img-fluid"
+              src="https://images.unsplash.com/photo-1584377334016-464803e03b80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt=""
+            />
 
             <div className="container">
-              <div className="carousel-caption text-end">
-                <h1>One more for good measure.</h1>
+              <div className="carousel-caption">
+                <h1>Jewellery</h1>
                 <p>
-                  Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                  Donec id elit non mi porta gravida at eget metus. Nullam id
-                  dolor id nibh ultricies vehicula ut id elit.
+                  Photo by{" "}
+                  <a href="https://unsplash.com/@kzzljhn00?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                    Kazzle John Delbo
+                  </a>{" "}
+                  on{" "}
+                  <a href="https://unsplash.com/s/photos/jewelry?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                    Unsplash
+                  </a>
                 </p>
                 <p></p>
               </div>
