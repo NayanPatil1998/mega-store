@@ -1,30 +1,32 @@
 import { ShoppingBasket } from "@material-ui/icons";
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth } from "../../Firebase/firebase";
 import { IinitialState } from "../../Redux/Reducers";
 import "react-toastify/dist/ReactToastify.css";
-import "./Header.css"
+import "./Header.css";
 
 const Header: React.FunctionComponent = () => {
   toast.configure();
+  const history = useHistory();
   const state = useSelector((state: IinitialState) => state);
-  const [cartLength, setCartLength] = React.useState(0)
+  const [cartLength, setCartLength] = React.useState(0);
   const signOut = () => {
     auth.signOut();
     toast.info("Sign out successful");
+    history.push("/");
   };
 
   React.useEffect(() => {
-     let count = 0;
-     state.cart.map((product) => {
-       count = count + product.quantity
-     })
-    setCartLength(count)
-    console.info(cartLength)
-  },[state.cart])
+    let count = 0;
+    state.cart.map((product) => {
+      count = count + product.quantity;
+    });
+    setCartLength(count);
+    console.info(cartLength);
+  }, [state.cart]);
 
   return (
     <div className="header">
@@ -56,24 +58,23 @@ const Header: React.FunctionComponent = () => {
                 </h5>
               </li>
 
-               <li className="nav-item me-3">
-                 <Link to="/" style={{ textDecoration: "none" }}>
-                 <h5 className="nav-link">
-                   Home
-                 </h5>
-                 </Link>
-
-               </li>
+              <li className="nav-item me-3">
+                <Link to="/" style={{ textDecoration: "none" }}>
+                  <h5 className="nav-link">Home</h5>
+                </Link>
+              </li>
               <li className="nav-item me-2">
                 {/* eslint-disable-next-line */}
-               <Link to="/cart">
-                 <a className="nav-link ">
-                   <span className="badge badge-pill bg-danger me-1">{cartLength}</span>
-                   <span>
-                    <ShoppingBasket />
-                  </span>
-                 </a>
-               </Link>
+                <Link to="/cart">
+                  <a className="nav-link ">
+                    <span className="badge badge-pill bg-danger me-1">
+                      {cartLength}
+                    </span>
+                    <span>
+                      <ShoppingBasket />
+                    </span>
+                  </a>
+                </Link>
               </li>
               {state.user == null ? (
                 <li className="nav-item me-2 mb-2">
@@ -103,7 +104,6 @@ const Header: React.FunctionComponent = () => {
                   2
                 </h5
               </li> */}
-
             </ul>
           </div>
         </div>
