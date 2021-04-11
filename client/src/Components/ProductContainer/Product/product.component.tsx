@@ -20,6 +20,19 @@ const Product: React.FunctionComponent<{ product: IProduct }> = ({
       <div style={{ margin: "auto" }}>
         <ScaleLoader loading={loading} />
       </div>
+      {product.feat ? (
+        <div className="row justify-content-end">
+          <span
+            style={{ width: "100px", margin: "10px", position: "absolute" }}
+            className="badge rounded-pill bg-danger w-2"
+          >
+            Featured
+          </span>
+        </div>
+      ) : (
+        <div></div>
+      )}
+
       <img
         onLoad={setLoad}
         src={product.image}
@@ -46,7 +59,7 @@ const Product: React.FunctionComponent<{ product: IProduct }> = ({
             />
           </div>
           <Link to={`/product/${product._id}`}>
-            <button className="btn btn-danger mt-3"> View Details</button>
+            <button className="btn btn-dark mt-3"> View Details</button>
           </Link>
         </div>
       </div>
