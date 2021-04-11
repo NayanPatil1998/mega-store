@@ -15,23 +15,31 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import CartPage from "./Pages/Cart/CartPage";
 import Checkout from "./Pages/checkout/checkout";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import Loading from "./Pages/Loading/loading";
 function App() {
   const dispatch = useDispatch();
   const queryClient = new QueryClient();
 
-  useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
-      console.log("User ----------->>> ", authUser);
-      if (authUser) {
-        dispatch(setUser(authUser));
-      } else {
-        dispatch(setUser(null));
-      }
-    });
-  }, []);
+  const [user, loading, error] = useAuthState(auth);
+  if (user) {
+    dispatch(setUser(user));
+  } else {
+    dispatch(setUser(null));
+  }
 
-  return (
+  // auth.onAuthStateChanged((authUser) => {
+  //   console.log("User ----------->>> ", authUser);
+  //   if (authUser) {
+  //     dispatch(setUser(authUser));
+  //   } else {
+  //     dispatch(setUser(null));
+  //   }
+  // });
+
+  return loading ? (
+    <Loading />
+  ) : (
     <QueryClientProvider client={queryClient}>
       <div>
         <Router>
