@@ -78,15 +78,23 @@ const CartPage: React.FunctionComponent = () => {
                 </div>
               </div>
             </div>
-            <Link to="/checkout">
+            {state.cart.length != 0 ? (
+              <Link to="/checkout">
+                <button
+                  style={{ width: "100%", height: "50px" }}
+                  className="btn btn-dark my-3"
+                >
+                  <h5>Proceed</h5>
+                </button>
+              </Link>
+            ) : (
               <button
                 style={{ width: "100%", height: "50px" }}
-                className="btn btn-dark my-3"
+                className="btn btn-dark my-3 disabled"
               >
-                <h5>Proceed</h5>
+                <h5>Cart is Empty</h5>
               </button>
-            </Link>
-
+            )}
             {/* <img
               className="img-fluid"
               width="30%"
