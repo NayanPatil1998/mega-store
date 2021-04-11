@@ -10,15 +10,15 @@ import { auth } from "./Firebase/firebase";
 import { useDispatch } from "react-redux";
 import { setUser } from "./Redux/Actions/actionCreators";
 import ProductDetail from "./Pages/ProductDetails/ProductDetails";
-import ProductCategoryContainer from "./Components/ProductsByCategory/ProductCategoryContainer";
 import CategoryPage from "./Pages/CategoryPage/Categorypage";
-import {QueryClient, QueryClientProvider} from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-import CartPage from "./Pages/Cart/CartPage"
+import CartPage from "./Pages/Cart/CartPage";
+import Checkout from "./Pages/checkout/checkout";
 
 function App() {
   const dispatch = useDispatch();
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -47,6 +47,7 @@ function App() {
               <Route path="/product/:id" component={ProductDetail} />
               <Route path="/products/:category" component={CategoryPage} />
               <Route path="/cart" component={CartPage} />
+              <Route path="/checkout" component={Checkout} />
 
               <Route path="/">
                 <Home />

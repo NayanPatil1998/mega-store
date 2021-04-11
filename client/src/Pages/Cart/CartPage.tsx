@@ -7,6 +7,7 @@ import CartProduct from "./CartProduct";
 import "./cartpage.css";
 import FlipMove from "react-flip-move";
 import NumberFormat from "react-number-format";
+import { Link } from "react-router-dom";
 const CartPage: React.FunctionComponent = () => {
   const state = useSelector((state: IinitialState) => state);
 
@@ -77,12 +78,14 @@ const CartPage: React.FunctionComponent = () => {
                 </div>
               </div>
             </div>
-            <button
-              style={{ width: "100%", height: "50px" }}
-              className="btn btn-dark my-3"
-            >
-              <h5>Proceed</h5>
-            </button>
+            <Link to="/checkout">
+              <button
+                style={{ width: "100%", height: "50px" }}
+                className="btn btn-dark my-3"
+              >
+                <h5>Proceed</h5>
+              </button>
+            </Link>
 
             {/* <img
               className="img-fluid"
