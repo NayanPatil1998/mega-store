@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
-import firebase from "firebase";
+
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../../Firebase/firebase";
-import { createUser } from "../../axios/axios.services";
+import axios, { AxiosResponse, AxiosError } from "axios";
+
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../Redux/Actions/actionCreators";
 import { IinitialState } from "../../Redux/Reducers";
 import { toast } from "react-toastify";
 import { css } from "@emotion/react";
-import RingLoader from "react-spinners/RingLoader";
+import SyncLoader from "react-spinners/SyncLoader";
 
 // CSS
 import "./signup.css";
 import "react-toastify/dist/ReactToastify.css";
+import { baseUrl } from "../../axios/axios.services";
+import { auth } from "../../Firebase/firebase";
 
 const SignUp: React.FunctionComponent = () => {
   toast.configure();
@@ -38,34 +40,36 @@ const SignUp: React.FunctionComponent = () => {
   const register = (e: any) => {
     setLoading(true);
     e.preventDefault();
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((rootUser) => {
-        var user = firebase.auth().currentUser;
-
-        user
-          ?.updateProfile({
-            displayName: name,
-          })
-          .then(() => {
-            createUser(name, email, user?.uid);
-            dispatch(setUser(user));
-            toast.success("Hurray, Sign Up Successful");
-            console.log(user);
-            setLoading(false);
-            history.push("/");
-          })
-          .catch(function (error) {
-            toast.error("Oops!! " + error.message);
-          });
+    axios
+      .post(`${baseUrl}/adduser`, {
+        name: name,
+        email: email,
+        password: password,
       })
-      .catch((errr) => toast.error("Oops!! " + errr.message));
+      .then(function (response: AxiosResponse) {
+        if (response.status == 500) {
+          setLoading(false);
+          toast.error("Oops!! " + response.data.message);
+        } else if (response.status == 200) {
+          auth.signInWithCustomToken(response.data).then((user) => {
+            console.log(user);
+            history.push("/");
+
+            setLoading(false);
+          });
+        }
+      })
+      .catch(function (error: AxiosError) {
+        setLoading(false);
+        toast.error("Oops!! " + error.message);
+        console.log(error);
+      });
   };
 
   return (
     <div className="text-center LoginPageContainer">
       {loading ? (
-        <RingLoader loading={loading} css={override} size={150} />
+        <SyncLoader loading={loading} css={override} size={30} />
       ) : (
         <main className="form-signin">
           <form onSubmit={register}>
@@ -95,7 +99,6 @@ const SignUp: React.FunctionComponent = () => {
               placeholder="Email address"
               required
               onChange={(e) => setEmail(e.target.value)}
-              autoFocus
             />
             <label htmlFor="inputPassword" className="visually-hidden">
               Password

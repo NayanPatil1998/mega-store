@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { IinitialState } from "../../Redux/Reducers";
 import { toast } from "react-toastify";
 import { css } from "@emotion/react";
-import RingLoader from "react-spinners/RingLoader";
+import SyncLoader from "react-spinners/SyncLoader";
 const Login: React.FunctionComponent = () => {
   toast.configure();
   const state = useSelector((state: IinitialState) => state);
@@ -47,7 +47,7 @@ const Login: React.FunctionComponent = () => {
   return (
     <div className="text-center LoginPageContainer">
       {loading ? (
-        <RingLoader loading={loading} css={override} size={150} />
+        <SyncLoader loading={loading} css={override} size={30} />
       ) : (
         <main className="form-signin">
           <form onSubmit={signIn}>
