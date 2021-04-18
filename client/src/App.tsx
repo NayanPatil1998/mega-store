@@ -17,9 +17,15 @@ import CartPage from "./Pages/Cart/CartPage";
 import Checkout from "./Pages/checkout/checkout";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loading from "./Pages/Loading/loading";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 function App() {
   const dispatch = useDispatch();
   const queryClient = new QueryClient();
+
+  const promise = loadStripe(
+    "pk_test_51HPvUxDNkye9sjaq2FpcEMpOMYbxNyXU2Gt0WWPWNKI4Hwtzes6hrZLy98WKSL5YA3kXVEpaL7GJDbPB5OsX1iiI00VHyoVxpv"
+  );
 
   const [user, loading, error] = useAuthState(auth);
   if (user) {
@@ -55,8 +61,11 @@ function App() {
               <Route path="/product/:id" component={ProductDetail} />
               <Route path="/products/:category" component={CategoryPage} />
               <Route path="/cart" component={CartPage} />
-              <Route path="/checkout" component={Checkout} />
-
+              <Route path="/checkout">
+                <Elements stripe={promise}>
+                  <Checkout />
+                </Elements>
+              </Route>
               <Route path="/">
                 <Home />
               </Route>
