@@ -17,6 +17,7 @@ import * as admin from "firebase-admin";
 import productRouter from "./Routes/product.routes";
 import categoryRouter from "./Routes/category.routes";
 import paymentRoutes from "./Routes/payment.routes";
+import ordersRoutes from "./Routes/orders.routes";
 
 const app = express();
 app.use(cors());
@@ -27,6 +28,7 @@ app.use("/api/payment", paymentRoutes );
 app.use("/api", usersRouter);
 app.use("/api", productRouter);
 app.use("/api", categoryRouter);
+app.use("/api", ordersRoutes);
 
 initdb();
 
