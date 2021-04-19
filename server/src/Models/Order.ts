@@ -11,6 +11,7 @@ export interface IOrder extends Document {
   status: string;
   amount: string;
   address: string;
+  uid: string;
   products: CartItem[];
 }
 
@@ -27,6 +28,10 @@ const OrderSchema: Schema = new Schema({
     type: Array,
     required: true,
   },
+  uid: {
+    type: String,
+    required: true,
+  },
   address: {
     type: String,
     required: true,
@@ -36,7 +41,7 @@ const OrderSchema: Schema = new Schema({
     required: true,
   },
   date: {
-    type: Date,
+    type: Number,
     required: true,
   },
 });

@@ -3,7 +3,7 @@ import { IOrder } from "../Models/Order";
 import Order from "../Models/Order";
 
 export const addOrder = async (req: Request, res: Response) => {
-  const { orderId, status, amount, products, date, address } = req.body;
+  const { orderId, status, amount, products, date, address, uid } = req.body;
   try {
     const order: IOrder = new Order({
       orderID: orderId,
@@ -12,6 +12,7 @@ export const addOrder = async (req: Request, res: Response) => {
       products: products,
       address: address,
       date: date,
+      uid: uid,
     });
     order.save((err) => {
       if (err) {
