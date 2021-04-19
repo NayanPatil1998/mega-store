@@ -11,8 +11,8 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { baseUrl } from "../../axios/axios.services";
+import axios, { AxiosResponse } from "axios";
+import { addOrder, baseUrl } from "../../axios/axios.services";
 import { PaymentIntentResult } from "@stripe/stripe-js";
 import { useHistory } from "react-router";
 
@@ -78,18 +78,27 @@ const Checkout: React.FC = () => {
 
     e.preventDefault();
     setProcessing(true);
-    const payload = await stripe
-      ?.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements?.getElement(CardNumberElement)!,
-        },
-      })
-      .then((paymentResponse: PaymentIntentResult) => {
-        setError(null);
-        setProcessing(false);
-        console.log(paymentResponse.paymentIntent?.status);
-      });
-    console.log(payload);
+    const payload:
+      | PaymentIntentResult
+      | undefined = await stripe?.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements?.getElement(CardNumberElement)!,
+      },
+    });
+    console.log(payload?.paymentIntent?.id);
+    const response: AxiosResponse = await addOrder(
+      payload?.paymentIntent?.id!,
+      payload?.paymentIntent?.status!,
+      state.cart,
+      fullAddress,
+      Date.now(),
+      getTotal().toString(),
+      state.user?.uid!
+    );
+    if (response?.status == 200) {
+      setError(null);
+      setProcessing(false);
+    }
   };
 
   return (

@@ -1,5 +1,6 @@
 import { auth } from "../Firebase/firebase";
-import IProduct from "../Components/ProductContainer/Product/product.type";
+import { CartItem } from "../Redux/Reducers/type";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 export const baseUrl: string = "http://0.0.0.0:8080/api";
 
@@ -16,3 +17,36 @@ export const baseUrl: string = "http://0.0.0.0:8080/api";
 //
 //
 // }
+
+export const addOrder = (
+  orderId: string,
+  status: string,
+  products: CartItem[],
+  address: string,
+  date: number,
+  amount: string,
+  uid: string
+): any => {
+  const token = auth.currentUser?.getIdToken;
+  console.log(token, orderId);
+  axios
+    .post(
+      `${baseUrl}/orders`,
+      {
+        orderId: orderId,
+        status: status,
+        products: products,
+        address: address,
+        date: date,
+        amount: amount,
+        uid: uid,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .then((res) => res);
+};
