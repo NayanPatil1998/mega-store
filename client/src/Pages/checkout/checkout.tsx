@@ -64,8 +64,10 @@ const Checkout: React.FC = () => {
       });
       setClientSecret(response.data.secret_id);
     };
-    getClientSecret();
-    console.log(clientSecret);
+    if (state.cart.length != 0) {
+      getClientSecret();
+      console.log(clientSecret);
+    }
   }, [state.cart]);
 
   const handleChange = (e: any) => {
@@ -95,6 +97,7 @@ const Checkout: React.FC = () => {
       getTotal().toString(),
       state.user?.uid!
     );
+    console.log(response?.status);
     if (response?.status == 200) {
       setError(null);
       setProcessing(false);
